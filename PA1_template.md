@@ -30,7 +30,7 @@ if (!file.exists(dest)) {
 ```
 
 ```
-## [1] "File downloaded on 2015-11-14 12:04:08"
+## [1] "File downloaded on 2015-11-14 12:23:55"
 ```
 
 ```r
@@ -215,7 +215,7 @@ data.frame(
 5. *Do these values differ from the estimates from the first part of the assignment? What is the impact of imputing missing data on the estimates of the total daily number of steps?*
 
 Inputing missing values raised both mean and median values.  
-Note that if we didn't ignore the NAs from the initial sum calculation, mean and median would be unaffected, because we would have removed the incomplete days, so the daily steps distribution would be unaffected.
+**Note**: if we didn't ignore the NAs from the initial *sum* calculation, mean and median would be unaffected by imputting, because we would have removed the incomplete days from the start.
 
 \newpage
 
@@ -266,14 +266,20 @@ mean_steps_days <-
     mean_steps_weekday,
     mean_steps_weekend
   )
+```
 
+\newpage
+
+The activity during the weekends is more distributed during the entire day, while through the working week the activity looks bimodal, more concentrated in the morning (sport activity?) and evening (commuting?).
+
+
+```r
 # panel plot faceted by day type
 ggplot(mean_steps_days, aes(x = interval, y = steps, colour = factor(day))) +
   geom_line() +
+  geom_smooth(se = FALSE) + # add smoother to help visualize distribution shape
   facet_grid(day ~ .) +
   guides(colour=FALSE)
 ```
 
-![](PA1_template_files/figure-html/weekdays_panel-1.png) 
-
-The activity during the weekends is more distributed during the entire day, while through the working week the activity is more concentrated in the morning.
+![](PA1_template_files/figure-html/weekdays_panel2-1.png) 
