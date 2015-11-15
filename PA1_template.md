@@ -3,7 +3,10 @@ Federico Calore
 7 Nov 2015  
 
 ## Introduction
-> Data from a personal activity monitoring device. This device collects data at 5 minute intervals through out the day. The data consists of two months of data from an anonymous individual collected during the months of October and November, 2012 and include the number of steps taken in 5 minute intervals each day.
+> Data from a personal activity monitoring device. This device collects data at
+> 5 minute intervals through out the day. The data consists of two months of data
+> from an anonymous individual collected during the months of October and November,
+> 2012 and include the number of steps taken in 5 minute intervals each day.
 
 ## Loading and preprocessing the data
 
@@ -30,7 +33,7 @@ if (!file.exists(dest)) {
 ```
 
 ```
-## [1] "File downloaded on 2015-11-14 12:23:55"
+## [1] "File downloaded on 2015-11-15 20:31:03"
 ```
 
 ```r
@@ -70,7 +73,7 @@ daily_steps <-
 
 library(ggplot2)
 ggplot(daily_steps, aes(steps)) +
-  geom_histogram() # build histogram of daily steps
+  geom_histogram(colour = "darkgrey", fill = "darkgrey") # build histogram of daily steps
 ```
 
 ![](PA1_template_files/figure-html/daily-1.png) 
@@ -151,6 +154,8 @@ sum(NAvalues) # sums the TRUEs (value 1)
 
 2. *Devise a strategy for filling in all of the missing values in the dataset. The strategy does not need to be sophisticated. For example, you could use the mean/median for that day, or the mean for that 5-minute interval, etc.*
 
+We will create a new dataset where all the values are averages for that interval across all available days, then we will use these averaged values to fill in the missing values in the original data set (NAs).
+
 
 ```r
 # build a new data frame with average steps for each interval
@@ -185,7 +190,9 @@ daily_steps_fill <-
 
 # new histogram of daily steps with inputed values
 ggplot(daily_steps_fill, aes(steps)) +
-  geom_histogram()
+  geom_histogram(data = daily_steps, aes(steps),
+                 colour = "grey", fill = "grey", linetype = "dashed") + # compare old hist...
+  geom_histogram(colour = "black", fill = "black", alpha = 0.3)         # ... with new hist
 ```
 
 ![](PA1_template_files/figure-html/daily_fill-1.png) 
