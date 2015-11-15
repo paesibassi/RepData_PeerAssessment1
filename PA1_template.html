@@ -93,7 +93,7 @@ if (!file.exists(dest)) {
   today &lt;- as.character(Sys.time())
   print(paste(&quot;File downloaded on&quot;, today)) # print date and time of download
 }</code></pre>
-<pre><code>## [1] &quot;File downloaded on 2015-11-15 20:31:03&quot;</code></pre>
+<pre><code>## [1] &quot;File downloaded on 2015-11-15 20:40:35&quot;</code></pre>
 <pre class="r"><code>content &lt;- unzip(dest, list = TRUE) # reads the list of files in the zip
 # check for existence of extracts, and skip unzipping in case
 if (!file.exists(content$Name)) {

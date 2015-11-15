@@ -3,10 +3,10 @@ title: 'Reproducible Research: Peer Assessment 1'
 author: "Federico Calore"
 date: "7 Nov 2015"
 output:
-  pdf_document: default
   html_document:
     keep_md: yes
     theme: cerulean
+  pdf_document: default
 ---
 
 ## Introduction

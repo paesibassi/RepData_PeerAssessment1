@@ -33,7 +33,7 @@ if (!file.exists(dest)) {
 ```
 
 ```
-## [1] "File downloaded on 2015-11-15 20:31:03"
+## [1] "File downloaded on 2015-11-15 20:40:35"
 ```
 
 ```r
